@@ -2,4 +2,6 @@
 # Ten plik .gitignore został utworzony automatycznie przez Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/Projekt/v15/Server/sqlite3
+/.vs
+/Projekt/obj
+/Projekt/bin

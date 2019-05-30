@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Projekt
 {
-    class Wynagrodzenie
+    public class Wynagrodzenie
     {
     }
 }

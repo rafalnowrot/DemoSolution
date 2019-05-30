@@ -8,5 +8,7 @@ namespace Projekt
 {
     public class Wynagrodzenie
     {
+        private decimal _wynagrodzenieStale;
+        private decimal _wynagrodzenieUznaniowe;
     }
 }

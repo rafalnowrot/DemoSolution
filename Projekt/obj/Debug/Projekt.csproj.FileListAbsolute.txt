@@ -1,7 +1,0 @@
-C:\Users\dell\source\repos\Projekt\Projekt\bin\Debug\Projekt.exe.config
-C:\Users\dell\source\repos\Projekt\Projekt\bin\Debug\Projekt.exe
-C:\Users\dell\source\repos\Projekt\Projekt\bin\Debug\Projekt.pdb
-C:\Users\dell\source\repos\Projekt\Projekt\obj\Debug\Projekt.csprojAssemblyReference.cache
-C:\Users\dell\source\repos\Projekt\Projekt\obj\Debug\Projekt.csproj.CoreCompileInputs.cache
-C:\Users\dell\source\repos\Projekt\Projekt\obj\Debug\Projekt.exe
-C:\Users\dell\source\repos\Projekt\Projekt\obj\Debug\Projekt.pdb

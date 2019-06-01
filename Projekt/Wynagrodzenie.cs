@@ -10,5 +10,6 @@ namespace Projekt
     {
         private decimal _wynagrodzenieStale;
         private decimal _wynagrodzenieUznaniowe;
+
     }
 }

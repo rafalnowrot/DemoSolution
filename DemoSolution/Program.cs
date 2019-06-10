@@ -2,13 +2,12 @@
 
 namespace DemoSolution
 {
-    class Program
+    public class Program
     {
-
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int exit;
-            BazaKlientów Lista = new BazaKlientów();
+            BazaKlientow Lista = new BazaKlientow();
             string klient = "";
             int zmienna = 0;
             do
@@ -30,13 +29,12 @@ namespace DemoSolution
                         Lista.DodajKlienta(klient);
                         break;
                     case 3:
-                        int rozmiar = Lista.ileKlientow();
+                        int rozmiar = Lista.IleKlientow();
                         for (int i = 0; i < rozmiar; i++)
                         {
                             klient = Lista.PokazKlientow(i);
                             Console.WriteLine(klient);
                         }
-
                         break;
                     default:
                         Console.WriteLine("Podano złą komendę!");
@@ -45,27 +43,22 @@ namespace DemoSolution
                 Console.WriteLine("Jeśli chcesz wyjść wciśnie '0'. Jeśli nie, wciśnij dowolną cyfrę");
                 exit = Convert.ToInt32(Console.ReadLine());
             } while (exit != 0);
-            //Console.ReadKey();
-
         }
 
-
-        static void Sprzdaz(int k465)
+        private static void Sprzdaz(int k465)
         {
             Console.WriteLine("Podaj model silnika:");
             string silnik = Console.ReadLine();
             Console.WriteLine("Podaj ile wynosi jego cena:");
             decimal cenaSilnika = int.Parse(Console.ReadLine());
-            decimal cenakoncowa1;
-
-
+            decimal cenaKoncowa;
             Console.WriteLine("czy klient chce zimowe opony? t/n");
             string opony = Console.ReadLine();
             Console.WriteLine("czy klient chce klimatyzacje? t/n");
             string klimatyzacja = Console.ReadLine();
             Console.WriteLine("czy klient chce autoalarm? t/n");
-            string autoalarm = Console.ReadLine();
-            if (opony == "t" && klimatyzacja == "t" && autoalarm == "t")
+            string autoAlarm = Console.ReadLine();
+            if (opony == "t" && klimatyzacja == "t" && autoAlarm == "t")
             {
                 Console.WriteLine("Podaj cenę Opon:");
                 decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
@@ -73,74 +66,61 @@ namespace DemoSolution
                 decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
                 Console.WriteLine("Podaj cenę alarmu:");
                 decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-
-
-                cenakoncowa1 = cenaSilnika + cenaOpon + cenaKlimatyzacji + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika + cenaOpon + cenaKlimatyzacji + cenaAlarmu;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-            if (opony == "t" && klimatyzacja == "n" && autoalarm == "n")
+            else if (opony == "t" && klimatyzacja == "n" && autoAlarm == "n")
             {
                 Console.WriteLine("Podaj cenę Opon:");
                 decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
-
-                cenakoncowa1 = cenaSilnika + cenaOpon;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika + cenaOpon;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-            if (opony == "t" && klimatyzacja == "t" && autoalarm == "n")
+            else if (opony == "t" && klimatyzacja == "t" && autoAlarm == "n")
             {
                 Console.WriteLine("Podaj cenę Opon:");
                 decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
                 Console.WriteLine("Podaj cenę klimatyzacji:");
                 decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
-
-                cenakoncowa1 = cenaSilnika + cenaKlimatyzacji + cenaOpon;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika + cenaKlimatyzacji + cenaOpon;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-            if (opony == "n" && klimatyzacja == "t" && autoalarm == "t")
+            else if (opony == "n" && klimatyzacja == "t" && autoAlarm == "t")
             {
-
                 Console.WriteLine("Podaj cenę klimatyzacji:");
                 decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
                 Console.WriteLine("Podaj cenę alarmu:");
                 decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-
-
-                cenakoncowa1 = cenaSilnika + cenaKlimatyzacji + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika + cenaKlimatyzacji + cenaAlarmu;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-            if (opony == "n" && klimatyzacja == "n" && autoalarm == "t")
+            else if (opony == "n" && klimatyzacja == "n" && autoAlarm == "t")
             {
                 Console.WriteLine("Podaj cenę alarmu:");
                 decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-
-
-                cenakoncowa1 = cenaSilnika + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika + cenaAlarmu;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-            if (opony == "n" && klimatyzacja == "n" && autoalarm == "n")
+            else if (opony == "n" && klimatyzacja == "n" && autoAlarm == "n")
             {
-                cenakoncowa1 = cenaSilnika;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-            if (opony == "t" && klimatyzacja == "n" && autoalarm == "t")
+            else if (opony == "t" && klimatyzacja == "n" && autoAlarm == "t")
             {
                 Console.WriteLine("Podaj cenę Opon:");
                 decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
-
                 Console.WriteLine("Podaj cenę alarmu:");
                 decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-
-                cenakoncowa1 = cenaSilnika + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika + cenaAlarmu;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-            if (opony == "n" && klimatyzacja == "t" && autoalarm == "n")
+            else if (opony == "n" && klimatyzacja == "t" && autoAlarm == "n")
             {
-
                 Console.WriteLine("Podaj cenę klimatyzacji:");
                 decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
-
-                cenakoncowa1 = cenaSilnika + cenaKlimatyzacji;
-                Console.WriteLine($"Cena wynosi: {cenakoncowa1}");
+                cenaKoncowa = cenaSilnika + cenaKlimatyzacji;
+                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
 
             Console.ReadLine();

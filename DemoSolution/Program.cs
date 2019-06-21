@@ -18,8 +18,9 @@ namespace DemoSolution
                 Console.WriteLine("Podaj co chcesz zrobić wciskając odpowiedni numer:");
                 Console.WriteLine("[1].Naprawa Silnika z dodatkami");
                 Console.WriteLine("[2].Dodaj Klientów do listy");
-                Console.WriteLine("[3].Wyświetl Listę klientów z pliku");
-                Console.WriteLine("[4].Zapisz klientów z pliku .txt w folderze na pulpicie");
+                Console.WriteLine("[3].Usuń klienta z listy");
+                Console.WriteLine("[4].Wyświetl Listę klientów z pliku");
+                Console.WriteLine("[5].Zapisz klientów z pliku .txt w folderze na pulpicie");
 
                 zmienna = Convert.ToInt32(Console.ReadLine());
 
@@ -32,30 +33,13 @@ namespace DemoSolution
                         _clientService.DodajKlienta(klient);
                         break;
                     case 3:
-                        ShowClients();
+                        DeleteClient();
                         break;
                     case 4:
-                        int liczbaklientow = _clientService.IleKlientow();
-                        var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                        var directoryPath = $"{desktopPath}\\Listaklientow";
-                        if (!Directory.Exists(directoryPath))
-                        {
-                            Directory.CreateDirectory(directoryPath);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Katalog już istnieje");
-                            Console.ReadKey();
-                        }
-                        if (!File.Exists($"{desktopPath}\\Listaklientow"))
-                        {
-                            StreamWriter sw = File.CreateText($"{desktopPath}\\Listaklientow\\plik.txt");
-                            for (int i = 0; i < liczbaklientow; i++)
-                            {
-                                sw.WriteLine(_clientService.PokazKlientow(i));
-                            }
-                            sw.Close();
-                        }
+                        ShowClients();
+                        break;
+                    case 5:
+                        SaveAsTXT();
                         break;
                     default:
                         Console.WriteLine("Podano złą komendę!");
@@ -149,12 +133,46 @@ namespace DemoSolution
 
         private static void ShowClients()
         {
-            int rozmiar = _clientService.IleKlientow();
-            for (int i = 0; i < rozmiar; i++)
+            var clients = _clientService.GetClients();
+            foreach (var client in clients)
             {
-                var klient = _clientService.PokazKlientow(i);
-                Console.WriteLine(klient);
+                Console.WriteLine($"Imię: '{client.FirstName}', nazwisko: '{client.Surname}'");
             }
+        }
+
+        private static void SaveAsTXT()
+        {
+            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var directoryPath = $"{desktopPath}\\Listaklientow";
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+            else
+            {
+                Console.WriteLine("Katalog już istnieje");
+                Console.ReadKey();
+            }
+            if (!File.Exists($"{desktopPath}\\Listaklientow"))
+            {
+                StreamWriter sw = File.CreateText($"{desktopPath}\\Listaklientow\\plik.txt");
+                var clients = _clientService.GetClients();
+                foreach (var client in clients)
+                {
+                    sw.WriteLine(
+                        $"Imię: '{client.FirstName}', nazwisko: '{client.Surname}', nr_rejestracyjny: '{client.PlateName}', " +
+                        $"Data_utworzenia: '{client.CreatedAt}', Pracownik: '{client.CreatedBy}'");
+                }
+
+                sw.Close();
+            }
+        }
+
+        private static void DeleteClient()
+        {
+            Console.WriteLine("Podaj nr ID klienta do usunięcia");
+            int id = Convert.ToInt32(Console.ReadLine());
+            _clientService.DeleteClient(id);
         }
     }
 }

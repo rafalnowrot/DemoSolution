@@ -7,6 +7,7 @@ namespace DemoSolution
 {
     public class ClientService
     {
+        private readonly ClientRepository _clientRepository = new ClientRepository();
         private List<string> klienci = new List<string>()
         {
             "Jon Smith, nr rejestracyjny: SMI XXXX, Data: 21.06.2019",
@@ -24,27 +25,18 @@ namespace DemoSolution
             nazwisko = Console.ReadLine();
             Console.WriteLine(" Podaj numer rejestracyjny pojazdu klienta");
             rejestracjaSamochodu = Console.ReadLine();
-
-            klient = imie + " " + nazwisko + ", nr rejestracyjny:" + rejestracjaSamochodu + ", Data: " + DateTime.Now;
+            
             klienci.Add(klient);
         }
 
-        public void UsunKlienta(string klient)
+        public void DeleteClient(int id)
         {
-            klienci.Remove(klient);
+            _clientRepository.Delete(id);
         }
 
-        public string PokazKlientow(int index)
-        {
-            var clientRepository = new ClientRepository();
-            clientRepository.Get();
-            throw new NotImplementedException();
+        public List<Client> GetClients()
+        {    
+            return _clientRepository.Get();
         }
-
-        public int IleKlientow()
-        {
-            return klienci.Count;
-        }
-        
     }
 }

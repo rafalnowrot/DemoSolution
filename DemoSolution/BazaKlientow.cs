@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace DemoSolution
 {
-    public class BazaKlientow
+    public class ClientService
     {
         private List<string> klienci = new List<string>()
         {
-            "Jon Smith, nr rejestracyjny: SMI XXXX",
-            "Donal Trump, nr rejestracyjny: SMI YYYY",
+            "Jon Smith, nr rejestracyjny: SMI XXXX, Data: 21.06.2019",
+            "Donal Trump, nr rejestracyjny: SMI YYYY, Data: 21.06.2019",
         };
         private string imie;
         private string nazwisko;
@@ -23,7 +25,7 @@ namespace DemoSolution
             Console.WriteLine(" Podaj numer rejestracyjny pojazdu klienta");
             rejestracjaSamochodu = Console.ReadLine();
 
-            klient = imie + " " + nazwisko + ", nr rejestracyjny:" + rejestracjaSamochodu;
+            klient = imie + " " + nazwisko + ", nr rejestracyjny:" + rejestracjaSamochodu + ", Data: " + DateTime.Now;
             klienci.Add(klient);
         }
 
@@ -34,12 +36,15 @@ namespace DemoSolution
 
         public string PokazKlientow(int index)
         {
-            return klienci[index];
+            var clientRepository = new ClientRepository();
+            clientRepository.Get();
+            throw new NotImplementedException();
         }
 
         public int IleKlientow()
         {
             return klienci.Count;
         }
+        
     }
 }

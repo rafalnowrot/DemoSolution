@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
+using DemoSolution.Core;
 
-namespace DemoSolution
+namespace DemoSolution.Infrastructure
 {
     public class ClientService
     {
@@ -37,6 +38,17 @@ namespace DemoSolution
         public List<Client> GetClients()
         {    
             return _clientRepository.Get();
+        }
+
+        public void AddClient(string userName, string firstName, string surname, string plataName)
+        {
+            var client = new Client();
+            client.FirstName = firstName;
+            client.Surname = surname;
+            client.PlateName = plataName;
+            client.CreatedBy = Environment.UserName;
+            client.CreatedAt = DateTime.UtcNow;
+            _clientRepository.Add(client);
         }
     }
 }

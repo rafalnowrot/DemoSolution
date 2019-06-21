@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoSolution.Infrastructure;
+using System;
 using System.IO;
 
 namespace DemoSolution
@@ -30,7 +31,7 @@ namespace DemoSolution
                         Sprzdaz(0);
                         break;
                     case 2:
-                        _clientService.DodajKlienta(klient);
+                        AddClient();
                         break;
                     case 3:
                         DeleteClient();
@@ -48,6 +49,15 @@ namespace DemoSolution
                 Console.WriteLine("Jeśli chcesz wyjść wciśnie '0'. Jeśli nie, wciśnij dowolną cyfrę");
                 exit = Convert.ToInt32(Console.ReadLine());
             } while (exit != 0);
+        }
+
+        private static void AddClient()
+        {
+            var userName = Environment.UserName;
+            var firstName = Console.ReadLine();
+            var surname = Console.ReadLine();
+            var plataName = Console.ReadLine();
+            _clientService.AddClient(userName, firstName, surname, plataName);
         }
 
         private static void Sprzdaz(int k465)

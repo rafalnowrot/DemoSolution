@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DemoSolution.Core;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 
-namespace DemoSolution
+namespace DemoSolution.Infrastructure
 {
     public class ClientRepository
     {
@@ -44,6 +46,19 @@ namespace DemoSolution
             {
                 sqlConnection.Open();
                 var commandText = ($"Delete FROM Clients where Id = {id}");
+                using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
+                {
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        internal void Add(Client client)
+        {
+            using (var sqlConnection = new SqlConnection(ConnectionString))
+            {
+                sqlConnection.Open();
+                var commandText = ($"insert into Clients values('{client.FirstName}','{client.Surname}','{client.PlateName}','{client.CreatedAt.ToString(CultureInfo.InvariantCulture)}','{client.CreatedBy}')");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();

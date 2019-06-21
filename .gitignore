@@ -10,3 +10,7 @@
 /DemoSolution/obj/Debug/netcoreapp2.2
 /DemoSolution/obj
 /DemoSolution/bin/Debug/netcoreapp2.2
+/DemoSolution.Core/obj
+/DemoSolution.Core/bin/Debug/netstandard2.0
+/DemoSolution.Infrastructure/bin/Debug/netstandard2.0
+/DemoSolution.Infrastructure/obj

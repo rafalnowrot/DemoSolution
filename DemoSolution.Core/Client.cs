@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemoSolution
+namespace DemoSolution.Core
 {
    public class Client
    {

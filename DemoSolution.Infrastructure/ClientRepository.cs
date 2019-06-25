@@ -53,6 +53,19 @@ namespace DemoSolution.Infrastructure
             }
         }
 
+        internal void Update(int id, string newNumber)
+        {
+            using (var sqlConnection = new SqlConnection(ConnectionString))
+            {
+                sqlConnection.Open();
+                var commandText = ($" UPDATE Clients SET PlateName = '{newNumber}' WHERE Id = '{id}'");
+                using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
+                {
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
         internal void Add(Client client)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))

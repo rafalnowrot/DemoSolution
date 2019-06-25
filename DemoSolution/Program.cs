@@ -20,8 +20,9 @@ namespace DemoSolution
                 Console.WriteLine("[1].Naprawa Silnika z dodatkami");
                 Console.WriteLine("[2].Dodaj Klientów do listy");
                 Console.WriteLine("[3].Usuń klienta z listy");
-                Console.WriteLine("[4].Wyświetl Listę klientów z pliku");
-                Console.WriteLine("[5].Zapisz klientów z pliku .txt w folderze na pulpicie");
+                Console.WriteLine("[4]. Edytuj nr rejestracyjny klienta");
+                Console.WriteLine("[5].Wyświetl Listę klientów z pliku");
+                Console.WriteLine("[6].Zapisz klientów z pliku .txt w folderze na pulpicie");
 
                 zmienna = Convert.ToInt32(Console.ReadLine());
 
@@ -37,9 +38,12 @@ namespace DemoSolution
                         DeleteClient();
                         break;
                     case 4:
-                        ShowClients();
+                        UpdateClient();
                         break;
                     case 5:
+                        ShowClients();
+                        break;
+                    case 6:
                         SaveAsTXT();
                         break;
                     default:
@@ -183,6 +187,15 @@ namespace DemoSolution
             Console.WriteLine("Podaj nr ID klienta do usunięcia");
             int id = Convert.ToInt32(Console.ReadLine());
             _clientService.DeleteClient(id);
+        }
+
+        private static void UpdateClient()
+        {
+            Console.WriteLine("Podaj nr ID klienta do nadpisania");
+            int id = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Podaj nowy numer rejestracyjny klienta do nadpisania");
+            string newNumber = Console.ReadLine();
+            _clientService.UpdateClient(id, newNumber);
         }
     }
 }

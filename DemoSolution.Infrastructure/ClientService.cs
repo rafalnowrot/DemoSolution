@@ -50,5 +50,10 @@ namespace DemoSolution.Infrastructure
             client.CreatedAt = DateTime.UtcNow;
             _clientRepository.Add(client);
         }
+
+        public void UpdateClient(int id, string newNumber)
+        {
+            _clientRepository.Update(id, newNumber);
+        }
     }
 }

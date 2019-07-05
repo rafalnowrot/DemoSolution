@@ -20,7 +20,7 @@ namespace DemoSolution
                 Console.WriteLine("[1].Naprawa Silnika z dodatkami");
                 Console.WriteLine("[2].Dodaj Klientów do listy");
                 Console.WriteLine("[3].Usuń klienta z listy");
-                Console.WriteLine("[4]. Edytuj nr rejestracyjny klienta");
+                Console.WriteLine("[4].Edytuj nr rejestracyjny klienta");
                 Console.WriteLine("[5].Wyświetl Listę klientów z pliku");
                 Console.WriteLine("[6].Zapisz klientów z pliku .txt w folderze na pulpicie");
 
@@ -29,7 +29,7 @@ namespace DemoSolution
                 switch (zmienna)
                 {
                     case 1:
-                        Sprzdaz(0);
+                        Sprzdaz();
                         break;
                     case 2:
                         AddClient();
@@ -64,7 +64,7 @@ namespace DemoSolution
             _clientService.AddClient(userName, firstName, surname, plataName);
         }
 
-        private static void Sprzdaz(int k465)
+        private static void Sprzdaz()
         {
             Console.WriteLine("Podaj model silnika:");
             string silnik = Console.ReadLine();

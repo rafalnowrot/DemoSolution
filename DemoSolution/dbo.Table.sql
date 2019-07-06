@@ -7,3 +7,4 @@
     [CreatedAt] DATETIME2 NOT NULL, 
     [CreatedBy] NVARCHAR(50) NOT NULL
 )
+

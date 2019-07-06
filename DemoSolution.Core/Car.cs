@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DemoSolution.Core
 {
-   public class Client
-   {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string Surname { get; set; }
-        public string PlateName { get; set; }
+    public class Car
+    {
+        public Guid Id { get; set; }
+        public string BrandName { get; set; }
+        public string Model { get; set; }
+        public int ClientId { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
     }

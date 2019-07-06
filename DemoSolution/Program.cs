@@ -7,6 +7,8 @@ namespace DemoSolution
     public class Program
     {
         private static ClientService _clientService = new ClientService();
+        private static CarService _carService = new CarService();
+
 
         public static void Main(string[] args)
         {
@@ -23,6 +25,7 @@ namespace DemoSolution
                 Console.WriteLine("[4].Edytuj nr rejestracyjny klienta");
                 Console.WriteLine("[5].Wyświetl Listę klientów z pliku");
                 Console.WriteLine("[6].Zapisz klientów z pliku .txt w folderze na pulpicie");
+                Console.WriteLine("[7].Wyświetl wszystkie samochody");
 
                 zmienna = Convert.ToInt32(Console.ReadLine());
 
@@ -46,6 +49,9 @@ namespace DemoSolution
                     case 6:
                         SaveAsTXT();
                         break;
+                    case 7:
+                        ShowCars();
+                        break;
                     default:
                         Console.WriteLine("Podano złą komendę!");
                         break;
@@ -53,6 +59,15 @@ namespace DemoSolution
                 Console.WriteLine("Jeśli chcesz wyjść wciśnie '0'. Jeśli nie, wciśnij dowolną cyfrę");
                 exit = Convert.ToInt32(Console.ReadLine());
             } while (exit != 0);
+        }
+
+        private static void ShowCars()
+        {
+            var cars = _carService.GetCars();
+            foreach (var car in cars)
+            {
+                Console.WriteLine($"Marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");
+            }
         }
 
         private static void AddClient()

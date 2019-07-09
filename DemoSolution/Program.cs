@@ -89,17 +89,22 @@ namespace DemoSolution
 
         private static void DeleteCar()
         {
+            ShowCars();
+
             Console.WriteLine("Podaj nr ID klienta do usunięcia");
-            int id = Convert.ToInt32(Console.ReadLine());
+            var id = Guid.Parse(Console.ReadLine());
             _carService.DeleteCar(id);
         }
 
         private static void AddCar()
         {
-            var brandName = Environment.UserName;
+            Console.WriteLine("Podaj markę samochodu");
+            var brandName = Console.ReadLine();
+            Console.WriteLine("Podaj model samochodu");
             var model = Console.ReadLine();
+            Console.WriteLine("Podaj ID klienta");
             int clientId = Convert.ToInt32(Console.ReadLine());
-            _carService.AddClient(brandName, model, clientId);
+            _carService.AddCar(brandName, model, clientId);
         }
 
         private static void ShowCars()
@@ -107,7 +112,7 @@ namespace DemoSolution
             var cars = _carService.GetCars();
             foreach (var car in cars)
             {
-                Console.WriteLine($"Marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");
+                Console.WriteLine($"ID: {car.Id}, marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");
             }
         }
 

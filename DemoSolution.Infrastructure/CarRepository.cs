@@ -53,12 +53,12 @@ namespace DemoSolution.Infrastructure
             }
         }
 
-        internal void Delete(int id)
+        internal void Delete(Guid id)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"Delete FROM Cars where Id = {id}");
+                var commandText = ($"Delete FROM Cars where Id = '{id}'");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -71,7 +71,7 @@ namespace DemoSolution.Infrastructure
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"insert into Cars values('{car.BrandName}','{car.Model}','{car.ClientId}','{car.CreatedAt.ToString(CultureInfo.InvariantCulture)}','{car.CreatedBy}')");
+                var commandText = ($"insert into Cars values('{car.Id}','{car.BrandName}','{car.Model}',{car.ClientId},'{car.CreatedBy}','{car.CreatedAt.ToString("s")}')");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();

@@ -14,9 +14,10 @@ namespace DemoSolution.Infrastructure
             return _carRepository.Get();
         }
 
-        public void AddClient(string brandName, string model, int clientId)
+        public void AddCar(string brandName, string model, int clientId)
         {
             var car = new Car();
+            car.Id = Guid.NewGuid();
             car.BrandName = brandName;
             car.Model = model;
             car.ClientId = clientId;
@@ -25,7 +26,7 @@ namespace DemoSolution.Infrastructure
             _carRepository.Add(car);
         }
 
-        public void DeleteCar(int id)
+        public void DeleteCar(Guid id)
         {
             _carRepository.Delete(id);
         }

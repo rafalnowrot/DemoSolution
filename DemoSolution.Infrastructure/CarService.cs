@@ -31,7 +31,7 @@ namespace DemoSolution.Infrastructure
             _carRepository.Delete(id);
         }
 
-        public void UpdateCar(int id, string brandName, string model, int clientId)
+        public void UpdateCar(Guid id, string brandName, string model, int clientId)
         {
             _carRepository.Update(id, brandName, model, clientId);
         }

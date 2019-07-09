@@ -75,8 +75,10 @@ namespace DemoSolution
 
         private static void UpdateCar()
         {
+            ShowCars();
+
             Console.WriteLine("Podaj nr ID klienta do nadpisania");
-            int id = Convert.ToInt32(Console.ReadLine());
+            var id = Guid.Parse(Console.ReadLine());
             Console.WriteLine("Podaj nową markę do nadpisania");
             string brandName = Console.ReadLine();
             Console.WriteLine("Podaj nowy model do nadpisania");

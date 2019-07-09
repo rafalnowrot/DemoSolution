@@ -40,7 +40,7 @@ namespace DemoSolution.Infrastructure
             return cars;
         }
 
-        internal void Update(int id, string brandName, string model, int clientId)
+        internal void Update(Guid id, string brandName, string model, int clientId)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {

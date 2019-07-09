@@ -26,6 +26,9 @@ namespace DemoSolution
                 Console.WriteLine("[5].Wyświetl Listę klientów z pliku");
                 Console.WriteLine("[6].Zapisz klientów z pliku .txt w folderze na pulpicie");
                 Console.WriteLine("[7].Wyświetl wszystkie samochody");
+                Console.WriteLine("[8].Dodaj samochód do listy Samochodów");
+                Console.WriteLine("[9].Usuń samochód z listy samochodów");
+                Console.WriteLine("[10].Edytuj dane samochodu z listy");
 
                 zmienna = Convert.ToInt32(Console.ReadLine());
 
@@ -52,6 +55,15 @@ namespace DemoSolution
                     case 7:
                         ShowCars();
                         break;
+                    case 8:
+                        AddCar();
+                        break;
+                    case 9:
+                        DeleteCar();
+                        break;
+                    case 10:
+                        UpdateCar();
+                        break;
                     default:
                         Console.WriteLine("Podano złą komendę!");
                         break;
@@ -59,6 +71,35 @@ namespace DemoSolution
                 Console.WriteLine("Jeśli chcesz wyjść wciśnie '0'. Jeśli nie, wciśnij dowolną cyfrę");
                 exit = Convert.ToInt32(Console.ReadLine());
             } while (exit != 0);
+        }
+
+        private static void UpdateCar()
+        {
+            Console.WriteLine("Podaj nr ID klienta do nadpisania");
+            int id = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Podaj nową markę do nadpisania");
+            string brandName = Console.ReadLine();
+            Console.WriteLine("Podaj nowy model do nadpisania");
+            string model = Console.ReadLine();
+            Console.WriteLine("Podaj nowe Id klienta");
+            int clientId = Convert.ToInt32(Console.ReadLine());
+
+            _carService.UpdateCar(id, brandName, model, clientId);
+        }
+
+        private static void DeleteCar()
+        {
+            Console.WriteLine("Podaj nr ID klienta do usunięcia");
+            int id = Convert.ToInt32(Console.ReadLine());
+            _carService.DeleteCar(id);
+        }
+
+        private static void AddCar()
+        {
+            var brandName = Environment.UserName;
+            var model = Console.ReadLine();
+            int clientId = Convert.ToInt32(Console.ReadLine());
+            _carService.AddClient(brandName, model, clientId);
         }
 
         private static void ShowCars()

@@ -9,14 +9,15 @@ namespace DemoSolution
         private static ClientService _clientService = new ClientService();
         private static CarService _carService = new CarService();
 
-
         public static void Main(string[] args)
         {
             int exit;
-            string klient = "";
             int zmienna = 0;
             do
             {
+
+                //Uporządkować kolejność w całym programie poszczególnych metod:
+                //Wyświetl,Dadaj, edytuj, usuń
                 Console.WriteLine("MenuGłówne");
                 Console.WriteLine("Podaj co chcesz zrobić wciskając odpowiedni numer:");
                 Console.WriteLine("[1].Naprawa Silnika z dodatkami");
@@ -117,7 +118,8 @@ namespace DemoSolution
                 Console.WriteLine($"ID: {car.Id}, marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");
             }
         }
-
+        
+        //TODO Trzeba zmienić AddClient, wrzucić niepotrzebne do Service i dodać "CW"
         private static void AddClient()
         {
             var userName = Environment.UserName;
@@ -127,6 +129,7 @@ namespace DemoSolution
             _clientService.AddClient(userName, firstName, surname, plataName);
         }
 
+        //TODO sprzedaż wymaga gruntownej przebudowy
         private static void Sprzdaz()
         {
             Console.WriteLine("Podaj model silnika:");
@@ -217,6 +220,7 @@ namespace DemoSolution
             }
         }
 
+        //TODO Wymaga wydzielenia do osobnej klasy->NewClass .txt FileService metoda save
         private static void SaveAsTXT()
         {
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);

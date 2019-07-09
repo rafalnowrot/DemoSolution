@@ -17,7 +17,7 @@ namespace DemoSolution.Infrastructure
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = "SELECT * FROM Clients";
+                var commandText = "SELECT Id, FirstName, Surname, PlateName, CreatedAt, CreatedBy FROM Clients";
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     using (var sqlDataReader = sqlCommand.ExecuteReader())
@@ -45,7 +45,7 @@ namespace DemoSolution.Infrastructure
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"Delete FROM Clients where Id = {id}");
+                var commandText = ($"DELETE FROM Clients WHERE Id = {id}");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -53,7 +53,7 @@ namespace DemoSolution.Infrastructure
             }
         }
 
-        internal void Update(int id, string newNumber)
+        public void Update(int id, string newNumber)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
@@ -66,12 +66,12 @@ namespace DemoSolution.Infrastructure
             }
         }
 
-        internal void Add(Client client)
+        public void Add(Client client)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"insert into Clients values('{client.FirstName}','{client.Surname}','{client.PlateName}','{client.CreatedAt.ToString(CultureInfo.InvariantCulture)}','{client.CreatedBy}')");
+                var commandText = ($"INSERT INTO Clients VALUES('{client.FirstName}','{client.Surname}','{client.PlateName}','{client.CreatedAt.ToString(CultureInfo.InvariantCulture)}','{client.CreatedBy}')");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();

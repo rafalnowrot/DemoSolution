@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DemoSolution.Core
 {
-   public class Client
+    public class Client
    {
         public int Id { get; set; }
         public string FirstName { get; set; }

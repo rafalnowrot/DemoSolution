@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Globalization;
 
 namespace DemoSolution.Infrastructure
 {
@@ -40,7 +39,7 @@ namespace DemoSolution.Infrastructure
             return cars;
         }
 
-        internal void Update(Guid id, string brandName, string model, int clientId)
+        public void Update(Guid id, string brandName, string model, int clientId)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
@@ -53,12 +52,12 @@ namespace DemoSolution.Infrastructure
             }
         }
 
-        internal void Delete(Guid id)
+        public void Delete(Guid id)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"Delete FROM Cars where Id = '{id}'");
+                var commandText = ($"DELETE FROM Cars WHERE Id = '{id}'");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -66,12 +65,12 @@ namespace DemoSolution.Infrastructure
             }
         }
 
-        internal void Add(Car car)
+        public void Add(Car car)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"insert into Cars values('{car.Id}','{car.BrandName}','{car.Model}',{car.ClientId},'{car.CreatedBy}','{car.CreatedAt.ToString("s")}')");
+                var commandText = ($"INSERT INTO Cars VALUES('{car.Id}', '{car.BrandName}', '{car.Model}', {car.ClientId}, '{car.CreatedBy}', '{car.CreatedAt.ToString("s")}')");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();

@@ -15,21 +15,18 @@ namespace DemoSolution
             int zmienna = 0;
             do
             {
-
-                //Uporządkować kolejność w całym programie poszczególnych metod:
-                //Wyświetl,Dadaj, edytuj, usuń
                 Console.WriteLine("MenuGłówne");
                 Console.WriteLine("Podaj co chcesz zrobić wciskając odpowiedni numer:");
                 Console.WriteLine("[1].Naprawa Silnika z dodatkami");
-                Console.WriteLine("[2].Dodaj Klientów do listy");
-                Console.WriteLine("[3].Usuń klienta z listy");
+                Console.WriteLine("[2].Wyświetl Listę klientów z pliku");
+                Console.WriteLine("[3].Dodaj Klientów do listy");
                 Console.WriteLine("[4].Edytuj nr rejestracyjny klienta");
-                Console.WriteLine("[5].Wyświetl Listę klientów z pliku");
+                Console.WriteLine("[5].Usuń klienta z listy");
                 Console.WriteLine("[6].Zapisz klientów z pliku .txt w folderze na pulpicie");
                 Console.WriteLine("[7].Wyświetl wszystkie samochody");
                 Console.WriteLine("[8].Dodaj samochód do listy Samochodów");
-                Console.WriteLine("[9].Usuń samochód z listy samochodów");
-                Console.WriteLine("[10].Edytuj dane samochodu z listy");
+                Console.WriteLine("[9].Edytuj dane samochodu z listy");
+                Console.WriteLine("[10].Usuń samochód z listy samochodów");
 
                 zmienna = Convert.ToInt32(Console.ReadLine());
 
@@ -39,16 +36,16 @@ namespace DemoSolution
                         Sprzdaz();
                         break;
                     case 2:
-                        AddClient();
+                        ShowClients();
                         break;
                     case 3:
-                        DeleteClient();
+                        AddClient();
                         break;
                     case 4:
                         UpdateClient();
                         break;
                     case 5:
-                        ShowClients();
+                        DeleteClient();
                         break;
                     case 6:
                         SaveAsTXT();
@@ -60,10 +57,10 @@ namespace DemoSolution
                         AddCar();
                         break;
                     case 9:
-                        DeleteCar();
+                        UpdateCar();
                         break;
                     case 10:
-                        UpdateCar();
+                        DeleteCar();
                         break;
                     default:
                         Console.WriteLine("Podano złą komendę!");
@@ -119,96 +116,14 @@ namespace DemoSolution
             }
         }
         
-        //TODO Trzeba zmienić AddClient, wrzucić niepotrzebne do Service i dodać "CW"
         private static void AddClient()
         {
-            var userName = Environment.UserName;
-            var firstName = Console.ReadLine();
-            var surname = Console.ReadLine();
-            var plataName = Console.ReadLine();
-            _clientService.AddClient(userName, firstName, surname, plataName);
+            _clientService.AddClient();
         }
-
-        //TODO sprzedaż wymaga gruntownej przebudowy
+        
         private static void Sprzdaz()
         {
-            Console.WriteLine("Podaj model silnika:");
-            string silnik = Console.ReadLine();
-            Console.WriteLine("Podaj ile wynosi jego cena:");
-            decimal cenaSilnika = int.Parse(Console.ReadLine());
-            decimal cenaKoncowa;
-            Console.WriteLine("czy klient chce zimowe opony? t/n");
-            string opony = Console.ReadLine();
-            Console.WriteLine("czy klient chce klimatyzacje? t/n");
-            string klimatyzacja = Console.ReadLine();
-            Console.WriteLine("czy klient chce autoalarm? t/n");
-            string autoAlarm = Console.ReadLine();
-            if (opony == "t" && klimatyzacja == "t" && autoAlarm == "t")
-            {
-                Console.WriteLine("Podaj cenę Opon:");
-                decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("Podaj cenę klimatyzacji:");
-                decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("Podaj cenę alarmu:");
-                decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-                cenaKoncowa = cenaSilnika + cenaOpon + cenaKlimatyzacji + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-            else if (opony == "t" && klimatyzacja == "n" && autoAlarm == "n")
-            {
-                Console.WriteLine("Podaj cenę Opon:");
-                decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
-                cenaKoncowa = cenaSilnika + cenaOpon;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-            else if (opony == "t" && klimatyzacja == "t" && autoAlarm == "n")
-            {
-                Console.WriteLine("Podaj cenę Opon:");
-                decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("Podaj cenę klimatyzacji:");
-                decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
-                cenaKoncowa = cenaSilnika + cenaKlimatyzacji + cenaOpon;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-            else if (opony == "n" && klimatyzacja == "t" && autoAlarm == "t")
-            {
-                Console.WriteLine("Podaj cenę klimatyzacji:");
-                decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("Podaj cenę alarmu:");
-                decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-                cenaKoncowa = cenaSilnika + cenaKlimatyzacji + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-            else if (opony == "n" && klimatyzacja == "n" && autoAlarm == "t")
-            {
-                Console.WriteLine("Podaj cenę alarmu:");
-                decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-                cenaKoncowa = cenaSilnika + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-            else if (opony == "n" && klimatyzacja == "n" && autoAlarm == "n")
-            {
-                cenaKoncowa = cenaSilnika;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-            else if (opony == "t" && klimatyzacja == "n" && autoAlarm == "t")
-            {
-                Console.WriteLine("Podaj cenę Opon:");
-                decimal cenaOpon = Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("Podaj cenę alarmu:");
-                decimal cenaAlarmu = Convert.ToDecimal(Console.ReadLine());
-                cenaKoncowa = cenaSilnika + cenaAlarmu;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-            else if (opony == "n" && klimatyzacja == "t" && autoAlarm == "n")
-            {
-                Console.WriteLine("Podaj cenę klimatyzacji:");
-                decimal cenaKlimatyzacji = Convert.ToDecimal(Console.ReadLine());
-                cenaKoncowa = cenaSilnika + cenaKlimatyzacji;
-                Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
-            }
-
-            Console.ReadLine();
+            SaleService.Sale();
         }
 
         private static void ShowClients()
@@ -220,33 +135,9 @@ namespace DemoSolution
             }
         }
 
-        //TODO Wymaga wydzielenia do osobnej klasy->NewClass .txt FileService metoda save
         private static void SaveAsTXT()
         {
-            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var directoryPath = $"{desktopPath}\\Listaklientow";
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-            else
-            {
-                Console.WriteLine("Katalog już istnieje");
-                Console.ReadKey();
-            }
-            if (!File.Exists($"{desktopPath}\\Listaklientow"))
-            {
-                StreamWriter sw = File.CreateText($"{desktopPath}\\Listaklientow\\plik.txt");
-                var clients = _clientService.GetClients();
-                foreach (var client in clients)
-                {
-                    sw.WriteLine(
-                        $"Imię: '{client.FirstName}', nazwisko: '{client.Surname}', nr_rejestracyjny: '{client.PlateName}', " +
-                        $"Data_utworzenia: '{client.CreatedAt}', Pracownik: '{client.CreatedBy}'");
-                }
-
-                sw.Close();
-            }
+            FileService.SaveAsTXT();
         }
 
         private static void DeleteClient()

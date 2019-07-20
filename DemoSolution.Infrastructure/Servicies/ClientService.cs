@@ -18,8 +18,16 @@ namespace DemoSolution.Infrastructure
             return _clientRepository.Get();
         }
 
-        public void AddClient(string userName, string firstName, string surname, string plataName)
+        public void AddClient()
         {
+            var userName = Environment.UserName;
+            Console.WriteLine("Podaj imię Klienta");
+            var firstName = Console.ReadLine();
+            Console.WriteLine("Podaj nazwisko Klienta");
+            var surname = Console.ReadLine();
+            Console.WriteLine("Podaj numer rejestracyjny pojazdu");
+            var plataName = Console.ReadLine();
+
             var client = new Client();
             client.FirstName = firstName;
             client.Surname = surname;

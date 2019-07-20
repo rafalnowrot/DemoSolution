@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DemoSolution.Infrastructure
+﻿namespace DemoSolution.Infrastructure
 {
     public class FileService
     {
         public static void SaveAsTXT()
         {
-            FileRepository.SaveAsTXT();
+            var clientService = new ClientService();
+            var clients = clientService.GetClients();
+
+            FileRepository.SaveAsTxt(clients);
         }
     }
 }

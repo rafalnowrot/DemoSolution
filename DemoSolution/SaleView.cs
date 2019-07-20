@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace DemoSolution.Infrastructure
+namespace DemoSolution
 {
-    public class SaleRepository
+    public class SaleView
     {
-        internal static void Sale()
+        public void Sale()
         {
             Console.WriteLine("Podaj model silnika:");
             string silnik = Console.ReadLine();

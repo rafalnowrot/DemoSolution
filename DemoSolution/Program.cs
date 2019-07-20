@@ -1,6 +1,5 @@
 ﻿using DemoSolution.Infrastructure;
 using System;
-using System.IO;
 
 namespace DemoSolution
 {
@@ -33,7 +32,7 @@ namespace DemoSolution
                 switch (zmienna)
                 {
                     case 1:
-                        Sprzdaz();
+                        Sprzedaz();
                         break;
                     case 2:
                         ShowClients();
@@ -71,6 +70,26 @@ namespace DemoSolution
             } while (exit != 0);
         }
 
+        private static void ShowCars()
+        {
+            var cars = _carService.GetCars();
+            foreach (var car in cars)
+            {
+                Console.WriteLine($"ID: {car.Id}, marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");
+            }
+        }
+
+        private static void AddCar()
+        {
+            Console.WriteLine("Podaj markę samochodu");
+            var brandName = Console.ReadLine();
+            Console.WriteLine("Podaj model samochodu");
+            var model = Console.ReadLine();
+            Console.WriteLine("Podaj ID klienta");
+            int clientId = Convert.ToInt32(Console.ReadLine());
+            _carService.AddCar(brandName, model, clientId);
+        }
+
         private static void UpdateCar()
         {
             ShowCars();
@@ -96,36 +115,6 @@ namespace DemoSolution
             _carService.DeleteCar(id);
         }
 
-        private static void AddCar()
-        {
-            Console.WriteLine("Podaj markę samochodu");
-            var brandName = Console.ReadLine();
-            Console.WriteLine("Podaj model samochodu");
-            var model = Console.ReadLine();
-            Console.WriteLine("Podaj ID klienta");
-            int clientId = Convert.ToInt32(Console.ReadLine());
-            _carService.AddCar(brandName, model, clientId);
-        }
-
-        private static void ShowCars()
-        {
-            var cars = _carService.GetCars();
-            foreach (var car in cars)
-            {
-                Console.WriteLine($"ID: {car.Id}, marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");
-            }
-        }
-        
-        private static void AddClient()
-        {
-            _clientService.AddClient();
-        }
-        
-        private static void Sprzdaz()
-        {
-            SaleService.Sale();
-        }
-
         private static void ShowClients()
         {
             var clients = _clientService.GetClients();
@@ -135,9 +124,25 @@ namespace DemoSolution
             }
         }
 
-        private static void SaveAsTXT()
+        private static void AddClient()
         {
-            FileService.SaveAsTXT();
+            Console.WriteLine("Podaj imię Klienta");
+            var firstName = Console.ReadLine();
+            Console.WriteLine("Podaj nazwisko Klienta");
+            var surname = Console.ReadLine();
+            Console.WriteLine("Podaj numer rejestracyjny pojazdu");
+            var plataName = Console.ReadLine();
+
+            _clientService.AddClient(firstName, surname, plataName);
+        }
+        
+        private static void UpdateClient()
+        {
+            Console.WriteLine("Podaj nr ID klienta do nadpisania");
+            int id = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Podaj nowy numer rejestracyjny klienta do nadpisania");
+            string newNumber = Console.ReadLine();
+            _clientService.UpdateClient(id, newNumber);
         }
 
         private static void DeleteClient()
@@ -147,13 +152,15 @@ namespace DemoSolution
             _clientService.DeleteClient(id);
         }
 
-        private static void UpdateClient()
+        private static void Sprzedaz()
         {
-            Console.WriteLine("Podaj nr ID klienta do nadpisania");
-            int id = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Podaj nowy numer rejestracyjny klienta do nadpisania");
-            string newNumber = Console.ReadLine();
-            _clientService.UpdateClient(id, newNumber);
+            var saleView = new SaleView();
+            saleView.Sale();
+        }
+
+        private static void SaveAsTXT()
+        {
+            FileService.SaveAsTXT();
         }
     }
 }

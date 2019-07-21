@@ -25,13 +25,15 @@ namespace DemoSolution.Infrastructure
                         clients = new List<Client>();
                         while (sqlDataReader.Read())
                         {
-                            var client = new Client();
-                            client.Id = sqlDataReader.GetFieldValue<int>(0);
-                            client.FirstName = sqlDataReader.GetFieldValue<string>(1);
-                            client.Surname = sqlDataReader.GetFieldValue<string>(2);
-                            client.PlateName = sqlDataReader.GetFieldValue<string>(3);
-                            client.CreatedAt = sqlDataReader.GetFieldValue<DateTime>(4);
-                            client.CreatedBy = sqlDataReader.GetFieldValue<string>(5);
+                            var client = new Client
+                            {
+                                Id = sqlDataReader.GetFieldValue<int>(0),
+                                FirstName = sqlDataReader.GetFieldValue<string>(1),
+                                Surname = sqlDataReader.GetFieldValue<string>(2),
+                                PlateName = sqlDataReader.GetFieldValue<string>(3),
+                                CreatedAt = sqlDataReader.GetFieldValue<DateTime>(4),
+                                CreatedBy = sqlDataReader.GetFieldValue<string>(5)
+                            };
                             clients.Add(client);
                         }
                     }

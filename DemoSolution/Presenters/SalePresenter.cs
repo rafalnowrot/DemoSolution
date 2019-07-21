@@ -2,9 +2,9 @@
 
 namespace DemoSolution
 {
-    public class SaleView
+    public class SalePresenter
     {
-        public void Sale()
+        public static void Sale()
         {
             Console.WriteLine("Podaj model silnika:");
             string silnik = Console.ReadLine();
@@ -81,8 +81,10 @@ namespace DemoSolution
                 cenaKoncowa = cenaSilnika + cenaKlimatyzacji;
                 Console.WriteLine($"Cena wynosi: {cenaKoncowa}");
             }
-
+            
             Console.ReadLine();
+
+            MainPresenter.ShowMenu();
         }
     }
 }

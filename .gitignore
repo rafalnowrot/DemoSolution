@@ -14,3 +14,5 @@
 /DemoSolution.Core/bin/Debug/netstandard2.0
 /DemoSolution.Infrastructure/bin/Debug/netstandard2.0
 /DemoSolution.Infrastructure/obj
+/DemoSolution.Web/bin/Debug/netcoreapp2.2
+/DemoSolution.Web/obj

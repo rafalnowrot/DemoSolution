@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using DemoSolution.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,20 +23,19 @@ namespace DemoSolution.Web.Controllers
             return View(clients);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //public ActionResult Create()
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //{
+        //    var clientService = new ClientService();
+        //    string fName =  ;
+        //    string sName = ;
+        //    string pName = ;
+
+        //    var clients = clientService.AddClient(fName, sName, pName)
+
+        //    return View();
+
+        //}
+
     }
 }

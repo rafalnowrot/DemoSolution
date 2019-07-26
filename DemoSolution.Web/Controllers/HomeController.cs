@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DemoSolution.Web.ViewModel;
 using DemoSolution.Web.Models;
 
 namespace DemoSolution.Web.Controllers

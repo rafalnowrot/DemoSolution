@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DemoSolution.Infrastructure;
+using DemoSolution.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,6 +19,34 @@ namespace DemoSolution.Web.Controllers
             var cars = carService.GetCars();
 
             return View(cars);
+        }
+        public IActionResult Edit(int id)
+        {
+            var carService = new CarService();
+            var cars = carService.GetCars();
+            var car = cars.Single();
+
+            var carViewModel = new CarViewModel
+            {
+                Id = car.Id,
+                BrandName = car.BrandName,
+                Model = car.Model,
+                ClientId = car.ClientId
+            };
+
+            return View(carViewModel);
+        }
+
+        // POST: Movies/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,BrandName,Model,ClientId")] CarViewModel car)
+        {
+            var carService = new CarService();
+            carService.UpdateCar(car.Id, car.BrandName, car.Model, car.ClientId);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

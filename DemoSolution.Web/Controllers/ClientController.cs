@@ -4,9 +4,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using DemoSolution.Core;
 using DemoSolution.Infrastructure;
+using DemoSolution.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,19 +26,33 @@ namespace DemoSolution.Web.Controllers
             return View(clients);
         }
 
-        //public ActionResult Create()
+        public IActionResult Edit(int id)
+        {
+            var clientService = new ClientService();
+            var clients = clientService.GetClients();
+            var client = clients.Single(x => x.Id == id);
 
-        //{
-        //    var clientService = new ClientService();
-        //    string fName =  ;
-        //    string sName = ;
-        //    string pName = ;
+            var clientViewModel = new ClientViewModel
+            {
+                Id = client.Id,
+                FirstName = client.FirstName,
+                Surname = client.Surname,
+                PlateName = client.PlateName
+            };
 
-        //    var clients = clientService.AddClient(fName, sName, pName)
+            return View(clientViewModel);
+        }
 
-        //    return View();
-
-        //}
-
+        // POST: Movies/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,Surname,PlateName")] ClientViewModel client)
+        {
+            var clientService = new ClientService();
+            clientService.UpdateClient(id, client.PlateName);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

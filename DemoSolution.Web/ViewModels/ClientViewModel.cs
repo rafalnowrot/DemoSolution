@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -11,8 +12,18 @@ namespace DemoSolution.Web.ViewModel
     {
 
         public int Id { get; set; }
+
+        [StringLength(60, MinimumLength = 3)]
+        [Required]
         public string FirstName { get; set; }
+
+        [StringLength(60, MinimumLength = 3)]
+        [Required]
         public string Surname { get; set; }
+
+        [StringLength(60, MinimumLength = 3)]
+        [Required]
         public string PlateName { get; set; }
+
     }
 }

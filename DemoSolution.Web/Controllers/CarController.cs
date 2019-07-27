@@ -48,5 +48,28 @@ namespace DemoSolution.Web.Controllers
             carService.UpdateCar(car.Id, car.BrandName, car.Model, car.ClientId);
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: Movies/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Movies/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(
+            [Bind("Id,BrandName,Model,ClientId")] CarViewModel car)
+        {
+            if (ModelState.IsValid)
+            {
+                var carService = new CarService();
+                carService.AddCar(car.BrandName, car.Model, car.ClientId);
+
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction(nameof(Index));
+            //return View();
+        }
     }
 }

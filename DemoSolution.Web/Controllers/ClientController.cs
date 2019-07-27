@@ -53,5 +53,28 @@ namespace DemoSolution.Web.Controllers
             clientService.UpdateClient(id, client.PlateName);
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: Movies/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Movies/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(
+            [Bind("Id,FirstName,Surname,PlateName")] ClientViewModel client)
+        {
+            if (ModelState.IsValid)
+            {
+                var clientService = new ClientService();
+                clientService.AddClient(client.FirstName, client.Surname, client.PlateName);
+                
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction(nameof(Index));
+            //return View();
+        }
     }
 }

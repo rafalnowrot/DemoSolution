@@ -71,5 +71,40 @@ namespace DemoSolution.Web.Controllers
             return RedirectToAction(nameof(Index));
             //return View();
         }
+
+        // GET: Movies/Delete/5
+        public async Task<IActionResult> Delete(Guid Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            var carService = new CarService();
+            var cars = carService.GetCars();
+            var car = cars.Single(x => x.Id == Id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            var carViewModel = new CarViewModel
+            {
+                Id = car.Id,
+            };
+
+            return View(carViewModel);
+
+            //return View(clients);
+        }
+
+        // POST: Movies/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var carService = new CarService();
+            carService.DeleteCar(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -20,11 +20,11 @@ namespace DemoSolution.Web.Controllers
 
             return View(cars);
         }
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
             var carService = new CarService();
             var cars = carService.GetCars();
-            var car = cars.Single();
+            var car = cars.Single(x => x.Id == id);
 
             var carViewModel = new CarViewModel
             {
@@ -42,7 +42,7 @@ namespace DemoSolution.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BrandName,Model,ClientId")] CarViewModel car)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,BrandName,Model,ClientId")] CarViewModel car)
         {
             var carService = new CarService();
             carService.UpdateCar(car.Id, car.BrandName, car.Model, car.ClientId);

@@ -34,5 +34,10 @@ namespace DemoSolution.Infrastructure
         {
             _carRepository.Update(id, brandName, model, clientId);
         }
+
+        public List<Car> ShowCarsFromOne(int id)
+        {
+           return _carRepository.ShowCarsFromOne(id);
+        }
     }
 }

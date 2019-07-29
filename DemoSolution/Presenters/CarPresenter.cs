@@ -29,11 +29,27 @@ namespace DemoSolution
                 case 4:
                     DeleteCar();
                     break;
+                case 5:
+                    ShowCarsFromOne();
+                    break;
                 default:
                     MainPresenter.ShowMenu();
                     break;
             }
         }
+
+        private static void ShowCarsFromOne()
+        {
+            Console.WriteLine("Podaj id klienta");
+            int id = Convert.ToInt32(Console.ReadLine());
+            var cars = _carService.GetCars();
+            _carService.ShowCarsFromOne(id);
+            foreach (var car in cars)
+            {
+                Console.WriteLine($"ID: {car.Id}, marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");
+            }
+        }
+
         private static void ShowCars()
         {
             var cars = _carService.GetCars();

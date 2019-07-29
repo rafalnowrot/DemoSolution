@@ -33,5 +33,10 @@ namespace DemoSolution.Infrastructure
         {
             _clientRepository.Update(id, newNumber);
         }
+
+        public List<Client> ShowOneClient(int id)
+        {
+            return  _clientRepository.ShowOneClient(id);
+        }
     }
 }

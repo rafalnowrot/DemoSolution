@@ -13,6 +13,7 @@ namespace DemoSolution
             Console.WriteLine("[2].Dodaj Klientów do listy");
             Console.WriteLine("[3].Edytuj nr rejestracyjny klienta");
             Console.WriteLine("[4].Usuń klienta z listy");
+            Console.WriteLine("[5].Pokaż jednego klienta");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -28,12 +29,27 @@ namespace DemoSolution
                 case 4:
                     DeleteClient();
                     break;
+                case 5:
+                    ShowOneClient();
+                    break;
                 default:
                     MainPresenter.ShowMenu();
                     break;
             }
         }
-        
+
+        private static void ShowOneClient()
+        {
+            Console.WriteLine("Podaj id");
+            int id = Convert.ToInt32(Console.ReadLine());
+            var clients = _clientService.GetClients();
+            _clientService.ShowOneClient(id);
+            foreach (var client in clients)
+            {
+                Console.WriteLine($"Imię: '{client.FirstName}', nazwisko: '{client.Surname}'");
+            }
+        }
+
         private static void ShowClients()
         {
             var clients = _clientService.GetClients();

@@ -114,5 +114,6 @@ namespace DemoSolution.Web.Controllers
             clientService.DeleteClient(id);
             return RedirectToAction(nameof(Index));
         }
+
     }
 }

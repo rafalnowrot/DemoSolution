@@ -42,12 +42,10 @@ namespace DemoSolution
         {
             Console.WriteLine("Podaj id");
             int id = Convert.ToInt32(Console.ReadLine());
-            var clients = _clientService.GetClients();
-            _clientService.ShowOneClient(id);
-            foreach (var client in clients)
-            {
-                Console.WriteLine($"Imię: '{client.FirstName}', nazwisko: '{client.Surname}'");
-            }
+
+            var client = _clientService.ShowOneClient(id);
+
+            Console.WriteLine($"Imię: '{client.FirstName}', nazwisko: '{client.Surname}'");
         }
 
         private static void ShowClients()

@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DemoSolution.Web.ViewModel
 {
-    public class ClientViewModel : Controller
+    public class ClientViewModel
     {
-
         public int Id { get; set; }
 
         [StringLength(60, MinimumLength = 3)]

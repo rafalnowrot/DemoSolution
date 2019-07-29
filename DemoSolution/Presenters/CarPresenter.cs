@@ -14,6 +14,8 @@ namespace DemoSolution
             Console.WriteLine("[2].Dodaj samochód do listy Samochodów");
             Console.WriteLine("[3].Edytuj dane samochodu z listy");
             Console.WriteLine("[4].Usuń samochód z listy samochodów");
+            Console.WriteLine("[5].Wyświetl wszystkie samochody jednego klienta");
+
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -42,8 +44,7 @@ namespace DemoSolution
         {
             Console.WriteLine("Podaj id klienta");
             int id = Convert.ToInt32(Console.ReadLine());
-            var cars = _carService.GetCars();
-            _carService.ShowCarsFromOne(id);
+            var cars =  _carService.ShowCarsFromOne(id);
             foreach (var car in cars)
             {
                 Console.WriteLine($"ID: {car.Id}, marka: '{car.BrandName}', model: '{car.Model}', klient: {car.ClientId}");

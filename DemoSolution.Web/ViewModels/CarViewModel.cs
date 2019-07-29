@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DemoSolution.Web.ViewModels
 {
-    public class CarViewModel : Controller
+    public class CarViewModel
     {
         public Guid Id { get; set; }
 

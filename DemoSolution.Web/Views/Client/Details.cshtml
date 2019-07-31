@@ -8,59 +8,30 @@
 
 <h4>Client</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Details">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Surname" class="control-label"></label>
-                    <input asp-for="Surname" class="form-control" />
-                    <span asp-validation-for="Surname" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PlateName" class="control-label"></label>
-                    <input asp-for="PlateName" class="form-control" />
-                    <span asp-validation-for="PlateName" class="text-danger"></span>
-                </div>
-            </form>
-        </div>
-    </div>
+<table class="table">
+<thead>
+     <tr>
+         <th>
+             @Html.DisplayNameFor(model => model.Id)
+             <input asp-for="Id" class="form-control" readonly="@(true)" />
+         </th>
+         <th>
+             @Html.DisplayNameFor(model => model.FirstName)
+             <input asp-for="FirstName" class="form-control" readonly="@(true)" />
+         </th>
+         <th>
+             @Html.DisplayNameFor(model => model.Surname)
+             <input asp-for="Surname" class="form-control" readonly="@(true)" />
+         </th>
+         <th>
+             @Html.DisplayNameFor(model => model.PlateName)
+             <input asp-for="PlateName" class="form-control" readonly="@(true)" />
+         </th>
+     </tr>
+    </thead>
+    </table>
 
     <table class="table">
-        @*<thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BrandName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Model)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClientId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedBy)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedAt)
-                </th>
-                <th></th>
-            </tr>
-        </thead>*@
         <tbody>
             @foreach (var item in Model.Cars)
             {
@@ -77,17 +48,6 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.ClientId)
                     </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.CreatedBy)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedAt)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>*@
                 </tr>
             }
         </tbody>
@@ -96,7 +56,6 @@
     <div>
         <a asp-action="Index">Back to List</a>
     </div>
-
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }

@@ -20,10 +20,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlateName)
-            </th>
+            </th>>
             <th>Akcje</th>
         </tr>
     </thead>
@@ -38,9 +35,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlateName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {Id=item.Id}) |

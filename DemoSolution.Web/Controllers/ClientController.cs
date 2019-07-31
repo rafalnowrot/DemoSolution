@@ -37,8 +37,7 @@ namespace DemoSolution.Web.Controllers
             {
                 Id = client.Id,
                 FirstName = client.FirstName,
-                Surname = client.Surname,
-                PlateName = client.PlateName
+                Surname = client.Surname
             };
 
             return View(clientViewModel);
@@ -46,10 +45,10 @@ namespace DemoSolution.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,Surname,PlateName")] ClientViewModel client)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,Surname")] ClientViewModel client)
         {
             var clientService = new ClientService();
-            clientService.UpdateClient(id, client.PlateName);
+            clientService.UpdateClient(id, client.FirstName, client.Surname);
             return RedirectToAction(nameof(Index));
         }
 
@@ -61,12 +60,12 @@ namespace DemoSolution.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Id,FirstName,Surname,PlateName")] ClientViewModel client)
+            [Bind("Id,FirstName,Surname")] ClientViewModel client)
         {
             if (ModelState.IsValid)
             {
                 var clientService = new ClientService();
-                clientService.AddClient(client.FirstName, client.Surname, client.PlateName);
+                clientService.AddClient(client.FirstName, client.Surname);
                 
                 return RedirectToAction("Index");
             }
@@ -91,8 +90,7 @@ namespace DemoSolution.Web.Controllers
             {
                 Id = client.Id,
                 FirstName = client.FirstName,
-                Surname = client.Surname,
-                PlateName = client.PlateName
+                Surname = client.Surname
             };
 
             return View(clientViewModel);
@@ -133,7 +131,6 @@ namespace DemoSolution.Web.Controllers
                 Id = client.Id,
                 FirstName = client.FirstName,
                 Surname = client.Surname,
-                PlateName = client.PlateName,
                 Cars = carViewModels
             };
 

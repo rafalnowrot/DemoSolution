@@ -11,7 +11,7 @@ namespace DemoSolution
         {
             Console.WriteLine("[1].Wyświetl Listę klientów z pliku");
             Console.WriteLine("[2].Dodaj Klientów do listy");
-            Console.WriteLine("[3].Edytuj nr rejestracyjny klienta");
+            Console.WriteLine("[3].Edytuj klienta");
             Console.WriteLine("[4].Usuń klienta z listy");
             Console.WriteLine("[5].Pokaż jednego klienta");
             int option = Convert.ToInt32(Console.ReadLine());
@@ -63,19 +63,20 @@ namespace DemoSolution
             var firstName = Console.ReadLine();
             Console.WriteLine("Podaj nazwisko Klienta");
             var surname = Console.ReadLine();
-            Console.WriteLine("Podaj numer rejestracyjny pojazdu");
-            var plataName = Console.ReadLine();
 
-            _clientService.AddClient(firstName, surname, plataName);
+            _clientService.AddClient(firstName, surname);
         }
 
         private static void UpdateClient()
         {
             Console.WriteLine("Podaj nr ID klienta do nadpisania");
             int id = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Podaj nowy numer rejestracyjny klienta do nadpisania");
-            string newNumber = Console.ReadLine();
-            _clientService.UpdateClient(id, newNumber);
+            Console.WriteLine("Podaj imię klienta");
+            string newName = Console.ReadLine();
+            Console.WriteLine("Podaj nazwisko klienta");
+            string newSurname = Console.ReadLine();
+
+            _clientService.UpdateClient(id, newName, newSurname);
         }
 
         private static void DeleteClient()

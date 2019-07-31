@@ -19,10 +19,6 @@ namespace DemoSolution.Web.ViewModels
         [Required]
         public string Surname { get; set; }
 
-        [StringLength(60, MinimumLength = 3)]
-        [Required]
-        public string PlateName { get; set; }
-
         public List<CarViewModel> Cars { get; set; }
     }
 }

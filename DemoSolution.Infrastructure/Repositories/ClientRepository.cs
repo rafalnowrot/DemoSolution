@@ -17,7 +17,7 @@ namespace DemoSolution.Infrastructure
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = "SELECT Id, FirstName, Surname, PlateName, CreatedAt, CreatedBy FROM Clients";
+                var commandText = "SELECT Id, FirstName, Surname, CreatedAt, CreatedBy FROM Clients";
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     using (var sqlDataReader = sqlCommand.ExecuteReader())
@@ -30,7 +30,6 @@ namespace DemoSolution.Infrastructure
                                 Id = sqlDataReader.GetFieldValue<int>(0),
                                 FirstName = sqlDataReader.GetFieldValue<string>(1),
                                 Surname = sqlDataReader.GetFieldValue<string>(2),
-                                PlateName = sqlDataReader.GetFieldValue<string>(3),
                                 CreatedAt = sqlDataReader.GetFieldValue<DateTime>(4),
                                 CreatedBy = sqlDataReader.GetFieldValue<string>(5)
                             };
@@ -47,7 +46,7 @@ namespace DemoSolution.Infrastructure
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = $"SELECT Id, FirstName, Surname, PlateName, CreatedAt, CreatedBy FROM Clients where Id = {id}";
+                var commandText = $"SELECT Id, FirstName, Surname, CreatedAt, CreatedBy FROM Clients where Id = {id}";
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 using (var sqlDataReader = sqlCommand.ExecuteReader())
                 {
@@ -62,7 +61,6 @@ namespace DemoSolution.Infrastructure
                         Id = sqlDataReader.GetFieldValue<int>(0),
                         FirstName = sqlDataReader.GetFieldValue<string>(1),
                         Surname = sqlDataReader.GetFieldValue<string>(2),
-                        PlateName = sqlDataReader.GetFieldValue<string>(3),
                         CreatedAt = sqlDataReader.GetFieldValue<DateTime>(4),
                         CreatedBy = sqlDataReader.GetFieldValue<string>(5)
                     };
@@ -83,12 +81,12 @@ namespace DemoSolution.Infrastructure
             }
         }
 
-        public void Update(int id, string newNumber)
+        public void Update(int id, string newName, string newSurname)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($" UPDATE Clients SET PlateName = '{newNumber}' WHERE Id = '{id}'");
+                var commandText = ($" UPDATE Clients SET FirstName = '{newName}', Surname = '{newSurname}'  WHERE Id = '{id}'");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -101,7 +99,7 @@ namespace DemoSolution.Infrastructure
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"INSERT INTO Clients VALUES('{client.FirstName}','{client.Surname}','{client.PlateName}','{client.CreatedAt.ToString(CultureInfo.InvariantCulture)}','{client.CreatedBy}')");
+                var commandText = ($"INSERT INTO Clients VALUES('{client.FirstName}','{client.Surname}','{client.CreatedAt.ToString(CultureInfo.InvariantCulture)}','{client.CreatedBy}')");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();

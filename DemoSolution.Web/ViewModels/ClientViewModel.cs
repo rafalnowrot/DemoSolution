@@ -20,9 +20,6 @@ namespace DemoSolution.Web.ViewModel
         [Required]
         public string Surname { get; set; }
 
-        [StringLength(60, MinimumLength = 3)]
-        [Required]
-        public string PlateName { get; set; }
 
     }
 }

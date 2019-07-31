@@ -7,7 +7,6 @@ namespace DemoSolution.Core
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
-        public string PlateName { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
     }

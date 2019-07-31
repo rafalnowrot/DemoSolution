@@ -20,7 +20,6 @@ namespace DemoSolution.Infrastructure
                     streamWriter.WriteLine(
                         $"Imię: '{client.FirstName}', " 
                         + $"nazwisko: '{client.Surname}', " 
-                        + $"nr_rejestracyjny: '{client.PlateName}', " 
                         + $"Data_utworzenia: '{client.CreatedAt}', "
                         + $"Pracownik: '{client.CreatedBy}'"
                     );

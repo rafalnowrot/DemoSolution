@@ -123,7 +123,6 @@ namespace DemoSolution.Web.Controllers
                 Id = client.Id,
                 FirstName = client.FirstName,
                 Surname = client.Surname,
-                PlateName = client.PlateName,
                 Cars = carViewModels
             };
 

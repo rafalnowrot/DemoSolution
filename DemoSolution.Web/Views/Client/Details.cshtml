@@ -6,56 +6,63 @@
 
 <h1>Details</h1>
 
-<h4>Client</h4>
+<h4>Clients</h4>
 <hr />
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Id)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Id)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FirstName)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Surname)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Surname)</dd>
+</dl>
+
 <table class="table">
-<thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-            <input asp-for="Id" class="form-control" readonly="@(true)" />
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-            <input asp-for="FirstName" class="form-control" readonly="@(true)" />
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surname)
-            <input asp-for="Surname" class="form-control" readonly="@(true)" />
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlateName)
-            <input asp-for="PlateName" class="form-control" readonly="@(true)" />
-        </th>
-    </tr>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("ID:  ")
+            </th>
+            <th>
+                @Html.DisplayName("BrandName:  ")
+            </th>
+            <th>
+                @Html.DisplayName("Model:  ")
+            </th>
+            <th>
+                @Html.DisplayName("ClientID:  ")
+            </th>
+        </tr>
     </thead>
-    </table>
+    <tbody>
 
-    <table class="table">
-        <tbody>
-            @foreach (var item in Model.Cars)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BrandName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClientId)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+        @foreach (var item in Model.Cars)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientId)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

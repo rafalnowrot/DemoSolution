@@ -106,5 +106,41 @@ namespace DemoSolution.Web.Controllers
             carService.DeleteCar(id);
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: Movies/Details/5
+        public IActionResult Details(int id)
+        {
+            var clientService = new ClientService();
+            var client = clientService.ShowOneClient(id);
+            var carService = new CarService();
+            var cars = carService.ShowCarsFromOne(id);
+            //ViewData["Client"] = clients;
+            //ViewData["Cars"] = cars;
+
+            var carViewModels = new List<CarViewModel>();
+            foreach (var car in cars)
+            {
+                var carViewModel = new CarViewModel
+                {
+                    Id = car.Id,
+                    BrandName = car.BrandName,
+                    Model = car.Model,
+                    ClientId = car.ClientId
+                };
+
+                carViewModels.Add(carViewModel);
+            }
+
+            var clientDetailsViewModel = new ClientDetailsViewModel
+            {
+                Id = client.Id,
+                FirstName = client.FirstName,
+                Surname = client.Surname,
+                PlateName = client.PlateName,
+                Cars = carViewModels
+            };
+
+            return View(clientDetailsViewModel);
+        }
     }
 }

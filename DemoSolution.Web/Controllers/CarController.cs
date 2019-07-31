@@ -37,9 +37,6 @@ namespace DemoSolution.Web.Controllers
             return View(carViewModel);
         }
 
-        // POST: Movies/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,BrandName,Model,ClientId")] CarViewModel car)
@@ -49,13 +46,11 @@ namespace DemoSolution.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Movies/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
@@ -69,10 +64,8 @@ namespace DemoSolution.Web.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction(nameof(Index));
-            //return View();
         }
 
-        // GET: Movies/Delete/5
         public async Task<IActionResult> Delete(Guid Id)
         {
             if (Id == null)
@@ -93,11 +86,8 @@ namespace DemoSolution.Web.Controllers
             };
 
             return View(carViewModel);
-
-            //return View(clients);
         }
 
-        // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
@@ -107,15 +97,12 @@ namespace DemoSolution.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Movies/Details/5
         public IActionResult Details(int id)
         {
             var clientService = new ClientService();
             var client = clientService.ShowOneClient(id);
             var carService = new CarService();
             var cars = carService.ShowCarsFromOne(id);
-            //ViewData["Client"] = clients;
-            //ViewData["Cars"] = cars;
 
             var carViewModels = new List<CarViewModel>();
             foreach (var car in cars)

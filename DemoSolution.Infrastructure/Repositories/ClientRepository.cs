@@ -30,8 +30,8 @@ namespace DemoSolution.Infrastructure
                                 Id = sqlDataReader.GetFieldValue<int>(0),
                                 FirstName = sqlDataReader.GetFieldValue<string>(1),
                                 Surname = sqlDataReader.GetFieldValue<string>(2),
-                                CreatedAt = sqlDataReader.GetFieldValue<DateTime>(4),
-                                CreatedBy = sqlDataReader.GetFieldValue<string>(5)
+                                CreatedAt = sqlDataReader.GetFieldValue<DateTime>(3),
+                                CreatedBy = sqlDataReader.GetFieldValue<string>(4)
                             };
                             clients.Add(client);
                         }
@@ -61,8 +61,8 @@ namespace DemoSolution.Infrastructure
                         Id = sqlDataReader.GetFieldValue<int>(0),
                         FirstName = sqlDataReader.GetFieldValue<string>(1),
                         Surname = sqlDataReader.GetFieldValue<string>(2),
-                        CreatedAt = sqlDataReader.GetFieldValue<DateTime>(4),
-                        CreatedBy = sqlDataReader.GetFieldValue<string>(5)
+                        CreatedAt = sqlDataReader.GetFieldValue<DateTime>(3),
+                        CreatedBy = sqlDataReader.GetFieldValue<string>(4)
                     };
                 }
             }
@@ -99,7 +99,7 @@ namespace DemoSolution.Infrastructure
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var commandText = ($"INSERT INTO Clients VALUES('{client.FirstName}','{client.Surname}','{client.CreatedAt.ToString(CultureInfo.InvariantCulture)}','{client.CreatedBy}')");
+                var commandText = ($"INSERT INTO Clients VALUES('{client.FirstName}','{client.Surname}','{client.CreatedAt:s}','{client.CreatedBy}')");
                 using (var sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();

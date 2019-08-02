@@ -43,7 +43,7 @@ namespace DemoSolution
             Console.WriteLine("Podaj id");
             int id = Convert.ToInt32(Console.ReadLine());
 
-            var client = _clientService.ShowOneClient(id);
+            var client = _clientService.GetClient(id);
 
             Console.WriteLine($"Imię: '{client.FirstName}', nazwisko: '{client.Surname}'");
         }

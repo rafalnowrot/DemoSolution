@@ -100,7 +100,7 @@ namespace DemoSolution.Web.Controllers
         public IActionResult Details(int id)
         {
             var clientService = new ClientService();
-            var client = clientService.ShowOneClient(id);
+            var client = clientService.GetClient(id);
             var carService = new CarService();
             var cars = carService.ShowCarsFromOne(id);
 

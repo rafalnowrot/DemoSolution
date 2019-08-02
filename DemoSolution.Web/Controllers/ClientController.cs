@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using DemoSolution.Core;
 using DemoSolution.Infrastructure;
 using DemoSolution.Web.ViewModel;
 using DemoSolution.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,20 +12,20 @@ namespace DemoSolution.Web.Controllers
 {
     public class ClientController : Controller
     {
+        ClientService clientService = new ClientService();
 
         public IActionResult Index()
         {
-            var clientService = new ClientService();
             var clients = clientService.GetClients();
+
+            // TODO Zmapować listę Client na listę ClientViewModel
 
             return View(clients);
         }
 
         public IActionResult Edit(int id)
         {
-            var clientService = new ClientService();
-            var clients = clientService.GetClients();
-            var client = clients.Single(x => x.Id == id);
+            var client = clientService.GetClient(id);
 
             var clientViewModel = new ClientViewModel
             {
@@ -47,8 +41,8 @@ namespace DemoSolution.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,Surname")] ClientViewModel client)
         {
-            var clientService = new ClientService();
             clientService.UpdateClient(id, client.FirstName, client.Surname);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -64,28 +58,22 @@ namespace DemoSolution.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var clientService = new ClientService();
                 clientService.AddClient(client.FirstName, client.Surname);
                 
                 return RedirectToAction("Index");
             }
+
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var clientService = new ClientService();
-            var clients = clientService.GetClients();
-            var client = clients.Single(x => x.Id == id);
+            var client = clientService.GetClient(id);
             if (client == null)
             {
                 return NotFound();
             }
+
             var clientViewModel = new ClientViewModel
             {
                 Id = client.Id,
@@ -100,15 +88,13 @@ namespace DemoSolution.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var clientService = new ClientService();
             clientService.DeleteClient(id);
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Details(int id)
         {
-            var clientService = new ClientService();
-            var client = clientService.ShowOneClient(id);
+            var client = clientService.GetClient(id);
             var carService = new CarService();
             var cars = carService.ShowCarsFromOne(id);
 

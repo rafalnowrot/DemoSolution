@@ -8,34 +8,37 @@ namespace DemoSolution.Infrastructure
     {
         private readonly ClientRepository _clientRepository = new ClientRepository();
 
-        public void DeleteClient(int id)
-        {
-            _clientRepository.Delete(id);
-        }
-
         public List<Client> GetClients()
         {    
             return _clientRepository.Get();
         }
 
+        public Client GetClient(int id)
+        {
+            return  _clientRepository.Get(id);
+        }
+
         public void AddClient(string firstName, string surname)
         {
-            var client = new Client();
-            client.FirstName = firstName;
-            client.Surname = surname;
-            client.CreatedBy = Environment.UserName;
-            client.CreatedAt = DateTime.UtcNow;
+            var client = new Client
+            {
+                FirstName = firstName,
+                Surname = surname,
+                CreatedBy = Environment.UserName,
+                CreatedAt = DateTime.UtcNow
+            };
+
             _clientRepository.Add(client);
         }
 
-        public void UpdateClient(int id, string newNumber, string newSurname)
+        public void UpdateClient(int id, string newFirstName, string newSurname)
         {
-            _clientRepository.Update(id, newNumber, newSurname);
+            _clientRepository.Update(id, newFirstName, newSurname);
         }
 
-        public Client ShowOneClient(int id)
+        public void DeleteClient(int id)
         {
-            return  _clientRepository.ShowOneClient(id);
+            _clientRepository.Delete(id);
         }
     }
 }

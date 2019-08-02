@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Globalization;
 
 namespace DemoSolution.Infrastructure
 {
@@ -41,7 +40,7 @@ namespace DemoSolution.Infrastructure
             return clients;
         }
 
-        public Client ShowOneClient(int id)
+        public Client Get(int id)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {

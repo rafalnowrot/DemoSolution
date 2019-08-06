@@ -11,6 +11,5 @@ namespace DemoSolution.Web.ViewModels
         [StringLength(60, MinimumLength = 3)]
         [Required]
         public string Password { get; set; }
-
     }
 }

@@ -2,11 +2,14 @@
 using DemoSolution.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using DemoSolution.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 
 namespace DemoSolution.Web.Controllers
 {
     public class LoginController : Controller
     {
+
+
         public IActionResult Index()
         {
             return View();
@@ -28,9 +31,11 @@ namespace DemoSolution.Web.Controllers
             {
                 return RedirectToAction(nameof(Index)); 
             }
-
+            
             return View("~/Views/Home/Index.cshtml");
         }
+
+
     }
     
 }

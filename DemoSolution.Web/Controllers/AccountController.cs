@@ -19,7 +19,7 @@ namespace DemoSolution.Web.Controllers
         public IActionResult Index(Employeer employeer)
         {
         var employeerService = new EmployeerService();
-           employeer = employeerService.ShowEmployeerAccount(); 
+           employeer = null; 
             
             return View(employeer);
         }

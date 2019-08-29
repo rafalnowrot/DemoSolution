@@ -13,6 +13,7 @@ namespace DemoSolution.Web.Controllers
     public class CarController : Controller
     {
         // GET: /<controller>/
+        
         public IActionResult Index()
         {
             var carService = new CarService();

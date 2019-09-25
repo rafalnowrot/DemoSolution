@@ -6,7 +6,7 @@ namespace DemoSolution.Infrastructure.Repositories
 {
     public class EmployeerRepository
     {
-        private const string ConnectionString = "Data Source=localhost;Initial Catalog=DemoSolution;Integrated Security=True;Pooling=False";
+        private const string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DemoSolution;Integrated Security=True;Pooling=False";
 
         public Employeer Get(string email, string password)
         {

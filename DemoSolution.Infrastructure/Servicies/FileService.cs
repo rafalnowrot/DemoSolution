@@ -1,4 +1,6 @@
-﻿namespace DemoSolution.Infrastructure
+﻿using System;
+
+namespace DemoSolution.Infrastructure
 {
     public class FileService
     {
@@ -7,7 +9,7 @@
             var clientService = new ClientService();
             var clients = clientService.GetClients();
 
-            FileRepository.SaveAsTxt(clients);
+            FileRepository.SaveAsTxt(clients, Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
         }
     }
 }

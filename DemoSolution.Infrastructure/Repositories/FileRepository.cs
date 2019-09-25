@@ -7,9 +7,8 @@ namespace DemoSolution.Infrastructure
 {
     public class FileRepository
     {
-        public static void SaveAsTxt(List<Client> clients)
+        public static void SaveAsTxt(List<Client> clients, string desktopPath)
         {
-            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             var directoryPath = $"{desktopPath}\\Listaklientow";
             Directory.CreateDirectory(directoryPath);
        

@@ -1,0 +1,14 @@
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\DemoSolution.UnitTest.deps.json
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\DemoSolution.UnitTest.runtimeconfig.json
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\DemoSolution.UnitTest.runtimeconfig.dev.json
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\DemoSolution.UnitTest.dll
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\bin\Debug\netcoreapp2.2\DemoSolution.UnitTest.pdb
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\obj\Debug\netcoreapp2.2\DemoSolution.UnitTest.csprojAssemblyReference.cache
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\obj\Debug\netcoreapp2.2\DemoSolution.UnitTest.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\obj\Debug\netcoreapp2.2\DemoSolution.UnitTest.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\obj\Debug\netcoreapp2.2\DemoSolution.UnitTest.AssemblyInfo.cs
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\obj\Debug\netcoreapp2.2\DemoSolution.UnitTest.dll
+C:\Users\dell\source\repos\DemoSolution\DemoSolution.UnitTest\obj\Debug\netcoreapp2.2\DemoSolution.UnitTest.pdb
